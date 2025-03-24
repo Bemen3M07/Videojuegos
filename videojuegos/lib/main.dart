@@ -6,7 +6,7 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
-
+//hola
 void main() {
   runApp(GameWidget(game: SpaceShooterGame()));
 }
