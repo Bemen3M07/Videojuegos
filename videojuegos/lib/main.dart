@@ -16,6 +16,8 @@ class SpaceShooterGame extends FlameGame
   late Player player;
 
   @override
+  Color backgroundColor() => Colors.blue;
+  @override
   Future<void> onLoad() async {
     final parallax = await loadParallaxComponent(
       [
