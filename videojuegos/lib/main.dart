@@ -56,8 +56,8 @@ class SpaceShooterGame extends FlameGame
     player.stopShooting();
   }
 }
-
-class Player extends SpriteAnimationComponent
+//cambiamos de SpriteAnimationComponent a SpriteComponent
+class Player extends SpriteComponent
     with HasGameReference<SpaceShooterGame> {
   Player()
       : super(
@@ -71,6 +71,9 @@ class Player extends SpriteAnimationComponent
   Future<void> onLoad() async {
     await super.onLoad();
 
+  sprite = await game.loadSprite('player.png');
+
+/*
     animation = await game.loadSpriteAnimation(
       'player.png',
       SpriteAnimationData.sequenced(
@@ -79,7 +82,7 @@ class Player extends SpriteAnimationComponent
         textureSize: Vector2(32, 48),
       ),
     );
-
+*/
     position = game.size / 2;
 
     _bulletSpawner = SpawnComponent(
@@ -154,7 +157,7 @@ class Bullet extends SpriteAnimationComponent
   }
 }
 
-class Enemy extends SpriteAnimationComponent
+class Enemy extends SpriteComponent
     with HasGameReference<SpaceShooterGame>, CollisionCallbacks {
   Enemy({
     super.position,
@@ -162,13 +165,12 @@ class Enemy extends SpriteAnimationComponent
           size: Vector2.all(enemySize),
           anchor: Anchor.center,
         );
-
   static const enemySize = 50.0;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-
+    /*
     animation = await game.loadSpriteAnimation(
       'enemy.png',
       SpriteAnimationData.sequenced(
@@ -177,7 +179,8 @@ class Enemy extends SpriteAnimationComponent
         textureSize: Vector2.all(16),
       ),
     );
-
+    */
+    sprite = await game.loadSprite('enemy.png');
     add(RectangleHitbox());
   }
 
