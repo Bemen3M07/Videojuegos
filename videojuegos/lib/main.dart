@@ -24,7 +24,7 @@ class GameApp extends StatelessWidget {
           children: [
             GameWidget(                 //GameWitget Es la clase que se encarga de mostrar el juego dentro de la interfaz de Flutter
               game: game,
-              overlayBuilderMap: {
+              overlayBuilderMap: {      //OverLayBuilderMap: ermite mostrar interfaces de Flutter encima del juego
                 'gameOver': (context, game) => GameOverOverlay(game: game as SpaceShooterGame),
               },
             ),
@@ -109,10 +109,12 @@ class SpaceShooterGame extends FlameGame with PanDetector, HasCollisionDetection
   void restart() {
     isPaused = false;
     isGameOver = false;
-    children.clear(); // Elimina todos los componentes
+    for (final child in children.toList()) {
+    child.removeFromParent();
+  } 
     overlays.remove('gameOver');
     resumeEngine();
-    onLoad(); // Reinicia el juego desde cero
+    onLoad(); 
   }
 }
 
