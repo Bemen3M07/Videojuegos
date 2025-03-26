@@ -19,6 +19,7 @@ class GameApp extends StatelessWidget {
     final game = SpaceShooterGame();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
           children: [
